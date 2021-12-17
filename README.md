@@ -1,4 +1,4 @@
-# multicorr
+# MCORR
 Multi-station correlation code 
 
 Self consistent Matlab code to perform a matched filter search. 
