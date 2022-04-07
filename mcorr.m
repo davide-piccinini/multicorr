@@ -41,14 +41,14 @@ end
 %% SETUP PARAMETERS
 Plwin=  0.5; % sec of P
 Slwin=  0.8; % sec of S
-prewin= 0.1;  % add this before P and S
+prewin= 0.0;  % add this before P and S
 
 CORRE=1;  % time correction for Plwin sets Plwin eq to S-P 
 
-NPHP=4;   % Numero minimo di fasi P
+NPHP=2;   % Numero minimo di fasi P
 NPHS=2;   % numero minimo di fasi S
 
-FILT=[3 15]; % estremi del filtro
+FILT=[2 15]; % estremi del filtro
 
 THR=0.65;  % soglia di CC
 
@@ -76,6 +76,7 @@ if isempty(D)==1
     return
 end
 
+fprintf('Reading templates... \n')
 nn=0;
 for ii=1:length(D)
         nn=nn+1;
@@ -165,9 +166,10 @@ OTime=NS(1).OTime;
 % MOTime=NS(1).MOTime;
 
 fprintf('Number of stations : %3.0f\n',length(NS))
-
+% keyboard
+fprintf('Reading dayfiles... \n')
 T0=clock;
-%keyboard
+
 %% %%%% XCORR CORE CALL %%%%%%%%
 parfor k=1:length(NS)
 %for k=1:length(NS)   % uncomment for non parallel
@@ -739,7 +741,7 @@ else
 end
 NAMEOUT=[filesamp.OTime '.' filesamp.station '.' filesamp.channel '.' PHASE '.' DAYNAME '.out'];
 
-%if strcmp(filesamp.station,'SEI')==1
+%if strcmp(filesamp.station,'AQU')==1
 %keyboard
 %end
 
